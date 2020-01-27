@@ -1,0 +1,106 @@
+<script language=javascript>
+var strDocURL = document.URL;
+var host = location.host;
+if (strDocURL.indexOf("http://") == 0 && host.indexOf("webex.com") > 0)
+{  	
+   	strDocURL = "https://"+strDocURL.substring(7,strDocURL.length);
+	location.href = strDocURL;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+<html>
+<HEAD><TITLE>MATS 3.0</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../../style/style.css">
+<link rel="stylesheet" href="../../style/style_new.css">
+<link rel="stylesheet" href="../../style/bootstrap.min.css">
+
+<SCRIPT type="text/javascript" src="/plugin/jquery.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/format_json.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/showdown.min.js"></SCRIPT>
+</HEAD>
+<body>
+<table cellSpacing="3" cellPadding="5" width="98%" border="0" align="center">
+<tr height=40>
+<td> 
+	<img src="../../images/button_goback.gif" onclick="history.back()">
+</td>
+</tr>
+<tr>
+<td> 
+<table width=98%  border=0 align=center cellspacing=1 cellpadding=3 class='table table-bordered table-striped table-condensed table-hover man_table'>
+<tr>
+<td width='157'><b>Sip CallId:</b></td>
+<td width='700'>0ca6ebbe7b29c1a1a4e30288834123fd@127.0.0.1</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_FROM:</b> </td>
+<td width='700'>10.240.215.61(SIP)</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_TO:</b> </td>
+<td width='700'>10.240.215.61(L2SIP)</td>
+</tr>
+<tr>
+<td width='157'><b>START_TIME:</b> </td>
+<td width='700'>Wed Sep 25 09:54:48 GMT 2019</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_METHOD:</b> </td>
+<td width='700'>[INVITE] <sip:10.240.215.61:25761;transport=tls;lr></td>
+</tr>
+<tr>
+<td width='157'><b>SIP_CSEQ:</b> </td>
+<td width='700'>sip.req</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_RAWMSG:</b> </td>
+<td class='formEntryCell' width='700'>{"dst":{"payload":"{&quot;ip&quot;:&quot;10.240.215.61&quot;,&quot;port&quot;:25761}","type":"L2SIP"},"id":"scid.0ca6ebbe7b29c1a1a4e30288834123fd@127.0.0.1","isTest":false,"msg":{"payload":"{&quot;callId&quot;:&quot;0ca6ebbe7b29c1a1a4e30288834123fd@127.0.0.1&quot;,&quot;address&quot;:&quot;&lt;sip:10.240.215.61:25761;transport=tls;lr&gt;&quot;,&quot;cseq&quot;:&quot;103&quot;,&quot;method&quot;:&quot;INVITE&quot;,&quot;details&quot;:&quot;INVITE&nbsp;sip:l2sip&#45;UA@l2sip&#45;e1&#45;01.wbx2.com:5061;transport=tls&nbsp;SIP&#47;2.0<br>Via:&nbsp;SIP&#47;2.0&#47;TLS&nbsp;209.197.207.5:5065;branch=z9hG4bKa5V7zTgRNS89daqJHIZEXQ~~514244;received=10.252.53.36;rport=45717<br>Via:&nbsp;SIP&#47;2.0&#47;TCP&nbsp;10.121.74.188:5060;branch=z9hG4bK0aIdjg7QNiaenR.ZLw6pjw~~731597<br>Via:&nbsp;SIP&#47;2.0&#47;UDP&nbsp;10.120.172.27:5060;branch=z9hG4bK78ec8f5996cdae7c;rport=5060<br>Record&#45;Route:&nbsp;&lt;sip:rr$n=net_me_tcp@209.197.207.5:5065;transport=tls;lr&gt;<br>Record&#45;Route:&nbsp;&lt;sip:rr$n=net_tahoe_udp@10.121.74.188:5060;transport=tcp;lr&gt;<br>To:&nbsp;\\&quot;WX2&nbsp;L2SIP\\&quot;&nbsp;&lt;sip:l2sip&#45;UA@127.0.0.1:22618;transport=tls&gt;;tag=1780848587<br>From:&nbsp;&lt;sip:Z08Rw8Yoa.SqCCBokxl9nqCQ@bts&#45;tap.webex.com&gt;;tag=222f481a31dc3070+10.120.172.27+IVRTAS_10.120.172.30<br>Contact:&nbsp;\\&quot;Cisco&nbsp;Webex&nbsp;Meeting\\&quot;&nbsp;&lt;sip:4156550000@10.120.172.27:5060;transport=udp&gt;;isfocus;sip.cisco.multistream<br>Call&#45;ID:&nbsp;0ca6ebbe7b29c1a1a4e30288834123fd@127.0.0.1<br>CSeq:&nbsp;103&nbsp;INVITE<br>Session&#45;Expires:&nbsp;1800;refresher=uac<br>Content&#45;Type:&nbsp;application&#47;sdp<br>Supported:&nbsp;timer<br>Session&#45;ID:&nbsp;df8b3e9cfeb23cf699900eab86c2fcc0;remote=4c19c1e59f1166f9a0263d2bc56158f8<br>Request&#45;Received:&nbsp;received=10.252.53.36,transport=tls,port=25246,endPointName=l2sip&#45;sip5061<br>Route:&nbsp;&lt;sip:10.240.215.61:25761;transport=tls;lr&gt;<br>Max&#45;Forwards:&nbsp;2<br>Content&#45;Length:&nbsp;2466<br><br>v=0<br>o=TAS&nbsp;1569405284&nbsp;1569405312&nbsp;IN&nbsp;IP4&nbsp;10.120.172.27<br>s=&#45;<br>c=IN&nbsp;IP4&nbsp;10.120.172.27<br>b=AS:4000<br>t=0&nbsp;0<br>m=audio&nbsp;18380&nbsp;RTP&#47;SAVP&nbsp;98&nbsp;101<br>c=IN&nbsp;IP4&nbsp;10.120.172.82<br>a=rtpmap:98&nbsp;opus&#47;48000&#47;2<br>a=fmtp:98&nbsp;usedtx=1;useinbandfec=1<br>a=rtpmap:101&nbsp;telephone&#45;event&#47;8000<br>a=fmtp:101&nbsp;0&#45;15<br>a=crypto:2&nbsp;AES_CM_128_HMAC_SHA1_32&nbsp;inline:************<br>a=content:main<br>a=ptime:20<br>a=extmap:1&#47;sendrecv&nbsp;http:&#47;&#47;protocols.cisco.com&#47;virtualid<br>a=sprop&#45;source:0&nbsp;count=3;policies=as:1<br>a=sprop&#45;simul:0&nbsp;0&nbsp;*<br>a=rtcp&#45;fb:*&nbsp;ccm&nbsp;cisco&#45;scr<br>m=audio&nbsp;18292&nbsp;RTP&#47;SAVP&nbsp;102<br>c=IN&nbsp;IP4&nbsp;10.120.172.82<br>a=rtpmap:102&nbsp;opus&#47;48000&#47;2<br>a=fmtp:102&nbsp;usedtx=1;useinbandfec=1<br>a=crypto:2&nbsp;AES_CM_128_HMAC_SHA1_32&nbsp;inline:************<br>a=content:slides<br>a=ptime:20<br>a=extmap:1&#47;sendrecv&nbsp;http:&#47;&#47;protocols.cisco.com&#47;virtualid<br>a=sprop&#45;source:0&nbsp;count=3;policies=as:1<br>a=sprop&#45;simul:0&nbsp;0&nbsp;*<br>a=rtcp&#45;fb:*&nbsp;ccm&nbsp;cisco&#45;scr<br>a=sendonly<br>m=video&nbsp;10000&nbsp;RTP&#47;AVP&nbsp;96&nbsp;106<br>c=IN&nbsp;IP4&nbsp;66.114.171.191<br>b=AS:5000<br>a=rtpmap:96&nbsp;H264&#47;90000<br>a=fmtp:96&nbsp;max&#45;br=5000;max&#45;dpb=5400;max&#45;fs=3600;max&#45;mbps=108000;packetization&#45;mode=1;profile&#45;level&#45;id=42e014<br>a=rtpmap:106&nbsp;H264&#47;90000<br>a=fmtp:106&nbsp;max&#45;br=5000;max&#45;dpb=5400;max&#45;fs=3600;max&#45;mbps=108000;packetization&#45;mode=1;profile&#45;level&#45;id=640C14<br>a=crypto:0&nbsp;AES_CM_128_HMAC_SHA1_32&nbsp;inline:************<br>a=sprop&#45;source:1&nbsp;count=25;policies=as:10;simul=1,2,3<br>a=sprop&#45;simul:1&nbsp;1&nbsp;*<br>a=sprop&#45;simul:1&nbsp;2&nbsp;*<br>a=sprop&#45;simul:1&nbsp;3&nbsp;*<br>a=rtcp&#45;fb:*&nbsp;nack&nbsp;pli<br>a=rtcp&#45;fb:*&nbsp;ccm&nbsp;cisco&#45;scr<br>a=extmap:1&nbsp;http:&#47;&#47;protocols.cisco.com&#47;virtualid<br>a=extmap:2&nbsp;http:&#47;&#47;protocols.cisco.com&#47;framemarking<br>a=label:11<br>a=content:main<br>a=sendrecv<br>m=video&nbsp;51538&nbsp;RTP&#47;AVP&nbsp;126<br>c=IN&nbsp;IP4&nbsp;66.114.175.225<br>b=AS:2000<br>a=rtpmap:126&nbsp;H264&#47;90000<br>a=fmtp:126&nbsp;&nbsp;profile&#45;level&#45;id=42e01e;max&#45;br=2000;max&#45;mbps=108000;max&#45;fs=34560;max&#45;dpb=20000;packetization&#45;mode=1<br>a=sendrecv<br>a=content:slides<br>a=label:12<br>a=extmap:1&nbsp;http:&#47;&#47;protocols.cisco.com&#47;virtualid<br>a=extmap:2&nbsp;http:&#47;&#47;protocols.cisco.com&#47;framemarking<br>a=crypto:2&nbsp;AES_CM_128_HMAC_SHA1_32&nbsp;inline:************<br>a=rtcp&#45;fb:*&nbsp;ccm&nbsp;cisco&#45;scr<br>a=rtcp&#45;fb:*&nbsp;nack&nbsp;pli<br>a=sprop&#45;source:1&nbsp;policies=as:1<br>a=sprop&#45;simul:1&nbsp;1&nbsp;126&nbsp;profile&#45;level&#45;id=42e01e;max&#45;mbps=108000;max&#45;fs=34560<br>m=application&nbsp;49750&nbsp;UDP&#47;BFCP&nbsp;*<br>c=IN&nbsp;IP4&nbsp;66.114.175.225<br>a=floorctrl:c&#45;only<br>a=confid:11<br>a=floorid:10&nbsp;mstrm:12<br>a=userid:20<br>a=connection:new<br>a=setup:active<br>a=fingerprint:sha&#45;1&nbsp;1C:A8:BA:2F:B1:18:11:CF:CF:20:69:7D:71:F4:D4:EC:83:1A:AF:F8<br>&quot;}","type":"sip.req"},"src":{"payload":"{&quot;ip&quot;:&quot;&lt;sip:10.240.215.61:25761;transport=tls;lr&gt;&quot;,&quot;port&quot;:0}","type":"SIP"},"time":"2019&#45;09&#45;25T09:54:48.866Z"}</td>
+</tr>
+<tr>
+<td width='157'><b>DESCRIPTION:</b> </td>
+<td width='700'>CMR4Spark</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>    
+
+
+<script>
+$(function(){
+	$('.formEntryCell').each(function() {
+		var rawMsg = $(this).html();
+		//rawMsg = format_json(rawMsg, false);
+		if(rawMsg.indexOf("service.note") > -1){
+		    console.log(rawMsg);
+            var obj = JSON.parse(rawMsg);
+            var payload = JSON.parse(obj.msg.payload);
+            var details = payload.details;
+            var converter = new showdown.Converter();
+            details = details.replace(/&lt;/gi, '<');
+            details = details.replace(/&gt;/gi, '>');
+            details = converter.makeHtml(details);
+            payload.details = details;
+            obj.msg.payload = payload;
+            rawMsg = JSON.stringify(obj);
+            rawMsg = rawMsg.replace(/\\n/gi, '<br/>');
+		}
+        rawMsg = format_str(rawMsg);
+		$(this).html(rawMsg);
+	})
+});
+</script>
+</body>
+</html>

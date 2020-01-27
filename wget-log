@@ -1,0 +1,28 @@
+--2019-09-26 13:41:42--  https://matsbts.webex.com/rest/cmr/sipcallflow/0/(GMT+05:30)%20Indian%20Standard%20Time--IST/1?sipCallId=b3525ed96a2a5f71@127.0.0.1,0ca6ebbe7b29c1a1a4e30288834123fd@127.0.0.1,mats_140190854606273206
+Resolving matsbts.webex.com (matsbts.webex.com)... 10.252.3.88
+Connecting to matsbts.webex.com (matsbts.webex.com)|10.252.3.88|:443... connected.
+HTTP request sent, awaiting response... 302 
+Location: http://matsbts.webex.com/rest/oauth2/login [following]
+--2019-09-26 13:41:43--  http://matsbts.webex.com/rest/oauth2/login
+Connecting to matsbts.webex.com (matsbts.webex.com)|10.252.3.88|:80... connected.
+HTTP request sent, awaiting response... 302 Found : Moved Temporarily
+Location: https://matsbts.webex.com/rest/oauth2/login [following]
+--2019-09-26 13:41:44--  https://matsbts.webex.com/rest/oauth2/login
+Reusing existing connection to matsbts.webex.com:443.
+HTTP request sent, awaiting response... 302 
+Location: https://idbroker.webex.com/idb/oauth2/v1/authorize?client_id=Cb58fc3fb03d26bcb605bf4126dca03c999c234f8c91af602cfb821df35a4049b&redirect_uri=https%3A%2F%2Fmatsbts.webex.com%2Frest%2Foauth2%2Flogin&response_type=code&scope=Identity%3ASCIM&state=2sBLSf [following]
+--2019-09-26 13:41:44--  https://idbroker.webex.com/idb/oauth2/v1/authorize?client_id=Cb58fc3fb03d26bcb605bf4126dca03c999c234f8c91af602cfb821df35a4049b&redirect_uri=https%3A%2F%2Fmatsbts.webex.com%2Frest%2Foauth2%2Flogin&response_type=code&scope=Identity%3ASCIM&state=2sBLSf
+Resolving idbroker.webex.com (idbroker.webex.com)... 64.68.99.6
+Connecting to idbroker.webex.com (idbroker.webex.com)|64.68.99.6|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fclient_id%3DCb58fc3fb03d26bcb605bf4126dca03c999c234f8c91af602cfb821df35a4049b%26redirect_uri%3Dhttps%253A%252F%252Fmatsbts.webex.com%252Frest%252Foauth2%252Flogin%26response_type%3Dcode%26scope%3DIdentity%253ASCIM%26state%3D2sBLSf [following]
+--2019-09-26 13:41:47--  https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fclient_id%3DCb58fc3fb03d26bcb605bf4126dca03c999c234f8c91af602cfb821df35a4049b%26redirect_uri%3Dhttps%3A%2F%2Fmatsbts.webex.com%2Frest%2Foauth2%2Flogin%26response_type%3Dcode%26scope%3DIdentity%3ASCIM%26state%3D2sBLSf
+Reusing existing connection to idbroker.webex.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: 'file.html'
+
+file.html                                              [<=>                                                                                                              ]       0  --.-KB/s               file.html                                              [ <=>                                                                                                             ]   9.15K  --.-KB/s    in 0s      
+
+2019-09-26 13:41:47 (47.5 MB/s) - 'file.html' saved [9373]
+

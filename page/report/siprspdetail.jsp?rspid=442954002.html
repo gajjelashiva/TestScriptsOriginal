@@ -1,0 +1,106 @@
+<script language=javascript>
+var strDocURL = document.URL;
+var host = location.host;
+if (strDocURL.indexOf("http://") == 0 && host.indexOf("webex.com") > 0)
+{  	
+   	strDocURL = "https://"+strDocURL.substring(7,strDocURL.length);
+	location.href = strDocURL;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+<html>
+<HEAD><TITLE>MATS 3.0</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../../style/style.css">
+<link rel="stylesheet" href="../../style/style_new.css">
+<link rel="stylesheet" href="../../style/bootstrap.min.css">
+
+<SCRIPT type="text/javascript" src="/plugin/jquery.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/format_json.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/showdown.min.js"></SCRIPT>
+</HEAD>
+<body>
+<table cellSpacing="3" cellPadding="5" width="98%" border="0" align="center">
+<tr height=40>
+<td> 
+	<img src="../../images/button_goback.gif" onclick="history.back()">
+</td>
+</tr>
+<tr>
+<td> 
+<table width=98%  border=0 align=center cellspacing=1 cellpadding=3 class='table table-bordered table-striped table-condensed table-hover man_table'>
+<tr>
+<td width='157'><b>Sip CallId:</b></td>
+<td width='700'>b3525ed96a2a5f71@127.0.0.1</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_FROM:</b> </td>
+<td width='700'>10.121.74.188(iCP-private)</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_TO:</b> </td>
+<td width='700'>209.197.195.21(VCS-E)</td>
+</tr>
+<tr>
+<td width='157'><b>START_TIME:</b> </td>
+<td width='700'>Wed Sep 25 09:54:43 GMT 2019</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_METHOD:</b> </td>
+<td width='700'>200</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_CSEQ:</b> </td>
+<td width='700'>102 NOTIFY</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_RAWMSG:</b> </td>
+<td class='formEntryCell' width='700'>CSEQ:102&nbsp;NOTIFY<br>Call&#45;ID:80bad6692e6434121f40135032607f1d@10.120.172.18<br>Session&#45;ID:3e430aba0a3f39b6a38f835e4d680078;remote=c3348ec141855f15a0f6868807b14b24<br>callMediaType:audio<br>calledNumber:automation69<br>callingNumber:89023844<br>code:200<br>contentLength:0<br>cseqMethod:NOTIFY<br>direction:OUT<br>From:&lt;sip:89023844@cisco.com&gt;;tag=2c1a2a730620490b<br>Max&#45;Forwards:70<br>Record&#45;Route:&lt;sip:rr$n=net_me_tls@10.121.122.142:5060;transport=udp;lr&gt;,&lt;sip:proxy&#45;call&#45;id=5b88c482&#45;b404&#45;41cc&#45;98d4&#45;c4b9dd8d92cf@209.197.195.21:5061;transport=tls;lr&gt;,&lt;sip:proxy&#45;call&#45;id=5b88c482&#45;b404&#45;41cc&#45;98d4&#45;c4b9dd8d92cf@209.197.195.21:5061;transport=tls;lr&gt;<br>To:&quot;Automation69&nbsp;Pass&apos;s&nbsp;Personal&nbsp;Room&quot;&nbsp;&lt;sip:automation69@bts&#45;tap.webex.com&gt;;tag=80bad6692e643412<br>Via:SIP&#47;2.0&#47;TLS&nbsp;209.197.195.21:5061;branch=z9hG4bKfd6040437fd2b76fdcc177278243a78b13463490;rport=26688;egress&#45;zone=iccmrTLSSJ;proxy&#45;call&#45;id=5b88c482&#45;b404&#45;41cc&#45;98d4&#45;c4b9dd8d92cf<br>Via:SIP&#47;2.0&#47;TLS&nbsp;209.197.195.21:5071;branch=z9hG4bKb11b8ae14f559efacdec062ac5e0010f266514;rport=32111;x&#45;cisco&#45;local&#45;service=nettle;received=209.197.195.21;ingress&#45;zone=DefaultZone<br><br>hostAndLocalIPSame:false<br>isInternallyGenerated:false<br>isMidCall:true<br>isMsgRetransmitted:false<br>localAlias:cloudProxyv1.0.497<br>localIPAddress:10.121.74.188<br>localPort:5061<br>localSessionID:3e430aba0a3f39b6a38f835e4d680078<br>method:200<br>reason:200&nbsp;OK<br>reasonCause:0<br>remoteIPAddress:209.197.195.21<br>remotePort:26688<br>remoteSessionID:c3348ec141855f15a0f6868807b14b24<br>ruriHost:10.120.172.18<br>ruriUser:webexas<br>sipMsgType:Response<br>transport:tls<br></td>
+</tr>
+<tr>
+<td width='157'><b>DESCRIPTION:</b> </td>
+<td width='700'>CLOUDPROXY34</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>    
+
+
+<script>
+$(function(){
+	$('.formEntryCell').each(function() {
+		var rawMsg = $(this).html();
+		//rawMsg = format_json(rawMsg, false);
+		if(rawMsg.indexOf("service.note") > -1){
+		    console.log(rawMsg);
+            var obj = JSON.parse(rawMsg);
+            var payload = JSON.parse(obj.msg.payload);
+            var details = payload.details;
+            var converter = new showdown.Converter();
+            details = details.replace(/&lt;/gi, '<');
+            details = details.replace(/&gt;/gi, '>');
+            details = converter.makeHtml(details);
+            payload.details = details;
+            obj.msg.payload = payload;
+            rawMsg = JSON.stringify(obj);
+            rawMsg = rawMsg.replace(/\\n/gi, '<br/>');
+		}
+        rawMsg = format_str(rawMsg);
+		$(this).html(rawMsg);
+	})
+});
+</script>
+</body>
+</html>

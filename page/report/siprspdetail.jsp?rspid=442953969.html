@@ -1,0 +1,106 @@
+<script language=javascript>
+var strDocURL = document.URL;
+var host = location.host;
+if (strDocURL.indexOf("http://") == 0 && host.indexOf("webex.com") > 0)
+{  	
+   	strDocURL = "https://"+strDocURL.substring(7,strDocURL.length);
+	location.href = strDocURL;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+<html>
+<HEAD><TITLE>MATS 3.0</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../../style/style.css">
+<link rel="stylesheet" href="../../style/style_new.css">
+<link rel="stylesheet" href="../../style/bootstrap.min.css">
+
+<SCRIPT type="text/javascript" src="/plugin/jquery.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/format_json.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/showdown.min.js"></SCRIPT>
+</HEAD>
+<body>
+<table cellSpacing="3" cellPadding="5" width="98%" border="0" align="center">
+<tr height=40>
+<td> 
+	<img src="../../images/button_goback.gif" onclick="history.back()">
+</td>
+</tr>
+<tr>
+<td> 
+<table width=98%  border=0 align=center cellspacing=1 cellpadding=3 class='table table-bordered table-striped table-condensed table-hover man_table'>
+<tr>
+<td width='157'><b>Sip CallId:</b></td>
+<td width='700'>b3525ed96a2a5f71@127.0.0.1</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_FROM:</b> </td>
+<td width='700'>10.121.74.188(iCP-private)</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_TO:</b> </td>
+<td width='700'>209.197.195.21(VCS-E)</td>
+</tr>
+<tr>
+<td width='157'><b>START_TIME:</b> </td>
+<td width='700'>Wed Sep 25 09:54:34 GMT 2019</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_METHOD:</b> </td>
+<td width='700'>INVITE</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_CSEQ:</b> </td>
+<td width='700'>1 INVITE</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_RAWMSG:</b> </td>
+<td class='formEntryCell' width='700'>CSEQ:1&nbsp;INVITE<br>Call&#45;ID:80bad6692e6434121f40135032607f1d@10.120.172.18<br>Session&#45;ID:3e430aba0a3f39b6a38f835e4d680078;remote=00000000000000000000000000000000<br>callMediaType:audio<br>callType:VideoDialout<br>calledNumber:89023844<br>callingNumber:automation69<br>code:0<br>contentLength:340<br>cseqMethod:INVITE<br>direction:OUT<br>Contact:&lt;sip:webexas@10.120.172.18:5060;transport=udp&gt;<br>Content&#45;Type:application&#47;sdp<br>From:&quot;Automation69&nbsp;Pass&apos;s&nbsp;Personal&nbsp;Room&quot;&nbsp;&lt;sip:automation69@bts&#45;tap.webex.com&gt;;tag=80bad6692e643412<br>Max&#45;Forwards:69<br>Record&#45;Route:&lt;sip:rr$n=net_givr_udp@10.121.74.188:5061;transport=tls;lr&gt;<br>Route:&lt;sip:me90sjvce&#45;tls.webex.com;transport=tls;lr;profile=iccmr10990ecccp31990&gt;<br>To:&lt;sip:89023844@cisco.com&gt;<br>Via:SIP&#47;2.0&#47;TLS&nbsp;10.121.74.188:5061;branch=z9hG4bK0aIdjg7QNiaenR.ZLw6pjw~~731559<br>Via:SIP&#47;2.0&#47;UDP&nbsp;10.120.172.18:5060;branch=z9hG4bK47a91277498aad33;rport=5060<br><br>hostAndLocalIPSame:false<br>isInternallyGenerated:false<br>isMidCall:false<br>isMsgRetransmitted:false<br>localAlias:cloudProxyv1.0.497<br>localIPAddress:10.121.74.188<br>localPort:34242<br>localSessionID:3e430aba0a3f39b6a38f835e4d680078<br>method:INVITE<br>reasonCause:0<br>remoteIPAddress:209.197.195.21<br>remotePort:5061<br>remoteSessionID:00000000000000000000000000000000<br>requestURI:sip:89023844@cisco.com;tgrp=12384732;trunk&#45;context=cca.webex.com;srvc=spark;x&#45;cisco&#45;svc&#45;type=spark&#45;mm;call&#45;type=VideoDialout;transport=tcp;x&#45;cisco&#45;opn=iccmr10990;x&#45;cisco&#45;dpn=ecccp31990<br>ruriHost:cisco.com<br>ruriUser:89023844<br>v=0&nbsp;<br>o=CMS&nbsp;64680&nbsp;1567575274065&nbsp;IN&nbsp;IP4&nbsp;10.120.172.77&nbsp;<br>s=ciscowebex_cms_session&nbsp;<br>c=IN&nbsp;IP4&nbsp;10.120.172.77&nbsp;<br>t=0&nbsp;0&nbsp;<br>m=audio&nbsp;19586&nbsp;RTP&#47;AVP&nbsp;9&nbsp;0&nbsp;8&nbsp;102&nbsp;101&nbsp;<br>a=rtpmap:9&nbsp;G722&#47;8000&nbsp;<br>a=rtpmap:0&nbsp;PCMU&#47;8000&nbsp;<br>a=rtpmap:8&nbsp;PCMA&#47;8000&nbsp;<br>a=rtpmap:102&nbsp;opus&#47;48000&#47;2&nbsp;<br>a=fmtp:102&nbsp;usedtx=1;useinbandfec=1&nbsp;<br>a=rtpmap:101&nbsp;telephone&#45;event&#47;8000&nbsp;<br>a=fmtp:101&nbsp;0&#45;15&nbsp;<br>a=ptime:20&nbsp;<br><br>serviceType:spark&#45;mm<br>sipMsgType:Request<br>transport:tls<br></td>
+</tr>
+<tr>
+<td width='157'><b>DESCRIPTION:</b> </td>
+<td width='700'>CLOUDPROXY34</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>    
+
+
+<script>
+$(function(){
+	$('.formEntryCell').each(function() {
+		var rawMsg = $(this).html();
+		//rawMsg = format_json(rawMsg, false);
+		if(rawMsg.indexOf("service.note") > -1){
+		    console.log(rawMsg);
+            var obj = JSON.parse(rawMsg);
+            var payload = JSON.parse(obj.msg.payload);
+            var details = payload.details;
+            var converter = new showdown.Converter();
+            details = details.replace(/&lt;/gi, '<');
+            details = details.replace(/&gt;/gi, '>');
+            details = converter.makeHtml(details);
+            payload.details = details;
+            obj.msg.payload = payload;
+            rawMsg = JSON.stringify(obj);
+            rawMsg = rawMsg.replace(/\\n/gi, '<br/>');
+		}
+        rawMsg = format_str(rawMsg);
+		$(this).html(rawMsg);
+	})
+});
+</script>
+</body>
+</html>

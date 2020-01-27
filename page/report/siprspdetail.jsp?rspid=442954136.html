@@ -1,0 +1,106 @@
+<script language=javascript>
+var strDocURL = document.URL;
+var host = location.host;
+if (strDocURL.indexOf("http://") == 0 && host.indexOf("webex.com") > 0)
+{  	
+   	strDocURL = "https://"+strDocURL.substring(7,strDocURL.length);
+	location.href = strDocURL;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+<html>
+<HEAD><TITLE>MATS 3.0</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../../style/style.css">
+<link rel="stylesheet" href="../../style/style_new.css">
+<link rel="stylesheet" href="../../style/bootstrap.min.css">
+
+<SCRIPT type="text/javascript" src="/plugin/jquery.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/format_json.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/showdown.min.js"></SCRIPT>
+</HEAD>
+<body>
+<table cellSpacing="3" cellPadding="5" width="98%" border="0" align="center">
+<tr height=40>
+<td> 
+	<img src="../../images/button_goback.gif" onclick="history.back()">
+</td>
+</tr>
+<tr>
+<td> 
+<table width=98%  border=0 align=center cellspacing=1 cellpadding=3 class='table table-bordered table-striped table-condensed table-hover man_table'>
+<tr>
+<td width='157'><b>Sip CallId:</b></td>
+<td width='700'>0ca6ebbe7b29c1a1a4e30288834123fd@127.0.0.1</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_FROM:</b> </td>
+<td width='700'>10.121.74.179(eCP-private)</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_TO:</b> </td>
+<td width='700'>10.121.74.188(iCP-private)</td>
+</tr>
+<tr>
+<td width='157'><b>START_TIME:</b> </td>
+<td width='700'>Wed Sep 25 09:54:49 GMT 2019</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_METHOD:</b> </td>
+<td width='700'>200</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_CSEQ:</b> </td>
+<td width='700'>103 INVITE</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_RAWMSG:</b> </td>
+<td class='formEntryCell' width='700'>CSEQ:103&nbsp;INVITE<br>Call&#45;ID:0ca6ebbe7b29c1a1a4e30288834123fd@127.0.0.1<br>Session&#45;ID:4c19c1e59f1166f9a0263d2bc56158f8;remote=df8b3e9cfeb23cf699900eab86c2fcc0<br>callMediaType:audio<br>calledNumber:l2sip&#45;UA<br>callingNumber:Z08Rw8Yoa.SqCCBokxl9nqCQ<br>code:200<br>contentLength:3010<br>cseqMethod:INVITE<br>direction:OUT<br>Accept:application&#47;sdp<br>Allow:INVITE,ACK,CANCEL,BYE,REFER,INFO,OPTIONS,NOTIFY,SUBSCRIBE<br>Allow&#45;Events:kpml<br>Contact:&lt;sip:l2sip&#45;UA@l2sip&#45;e1&#45;01.wbx2.com:5061;transport=tls&gt;;x&#45;cisco&#45;svc&#45;type=spark;call&#45;type=squared<br>Content&#45;Type:application&#47;sdp<br>From:&lt;sip:Z08Rw8Yoa.SqCCBokxl9nqCQ@bts&#45;tap.webex.com&gt;;tag=222f481a31dc3070+10.120.172.27+IVRTAS_10.120.172.30<br>Locus:4bc3538c&#45;1060&#45;35aa&#45;b85d&#45;8430d50bc779<br>Locus&#45;Type:CALL<br>Supported:replaces<br>To:&quot;WX2&nbsp;L2SIP&quot;&nbsp;&lt;sip:l2sip&#45;UA@127.0.0.1:22618;transport=tls&gt;;tag=1780848587<br>User&#45;Agent:Cisco&#45;L2SIP<br>Via:SIP&#47;2.0&#47;TCP&nbsp;10.121.74.188:5060;branch=z9hG4bK0aIdjg7QNiaenR.ZLw6pjw~~731597<br>Via:SIP&#47;2.0&#47;UDP&nbsp;10.120.172.27:5060;branch=z9hG4bK78ec8f5996cdae7c;rport=5060<br>WebexMeetingNumber:157750589<br><br>hostAndLocalIPSame:false<br>isInternallyGenerated:false<br>isMidCall:true<br>isMsgRetransmitted:false<br>localAlias:cloudProxyv1.0.497<br>localIPAddress:10.121.74.179<br>localPort:5060<br>localSessionID:4c19c1e59f1166f9a0263d2bc56158f8<br>method:200<br>reason:200&nbsp;OK<br>reasonCause:0<br>remoteAlias:Cisco&#45;L2SIP<br>remoteIPAddress:10.121.74.188<br>remotePort:37817<br>remoteSessionID:df8b3e9cfeb23cf699900eab86c2fcc0<br>ruriHost:l2sip&#45;e1&#45;01.wbx2.com<br>ruriUser:l2sip&#45;UA<br>v=0&nbsp;<br>o=linus&nbsp;0&nbsp;7&nbsp;IN&nbsp;IP4&nbsp;207.182.188.200&nbsp;<br>s=&#45;&nbsp;<br>c=IN&nbsp;IP4&nbsp;207.182.188.200&nbsp;<br>b=TIAS:7128000&nbsp;<br>t=0&nbsp;0&nbsp;<br>m=audio&nbsp;20250&nbsp;RTP&#47;SAVP&nbsp;98&nbsp;101&nbsp;<br>c=IN&nbsp;IP4&nbsp;207.182.188.200&nbsp;<br>b=TIAS:64000&nbsp;<br>a=content:main&nbsp;<br>a=sendrecv&nbsp;<br>a=rtpmap:98&nbsp;opus&#47;48000&#47;2&nbsp;<br>a=fmtp:98&nbsp;maxplaybackrate=48000;maxaveragebitrate=64000;stereo=1&nbsp;<br>a=rtpmap:101&nbsp;telephone&#45;event&#47;8000&nbsp;<br>a=fmtp:101&nbsp;0&#45;15&nbsp;<br>a=extmap:1&#47;sendrecv&nbsp;http:&#47;&#47;protocols.cisco.com&#47;virtualid&nbsp;<br>a=crypto:2&nbsp;AES_CM_128_HMAC_SHA1_32&nbsp;inline:********MASKED***************&nbsp;<br>a=label:100&nbsp;<br>a=sprop&#45;source:0&nbsp;count=20;policies=as:1,al:2;lrotation=1;mavatar=1&nbsp;<br>a=sprop&#45;simul:0&nbsp;0&nbsp;*&nbsp;<br>a=rtcp&#45;fb:*&nbsp;ccm&nbsp;cisco&#45;scr&nbsp;<br>m=audio&nbsp;17484&nbsp;RTP&#47;SAVP&nbsp;102&nbsp;<br>c=IN&nbsp;IP4&nbsp;207.182.188.200&nbsp;<br>b=TIAS:64000&nbsp;<br>a=content:slides&nbsp;<br>a=recvonly&nbsp;<br>a=rtpmap:102&nbsp;opus&#47;48000&#47;2&nbsp;<br>a=fmtp:102&nbsp;maxplaybackrate=48000;maxaveragebitrate=64000;stereo=1&nbsp;<br>a=extmap:1&#47;sendrecv&nbsp;http:&#47;&#47;protocols.cisco.com&#47;virtualid&nbsp;<br>a=crypto:2&nbsp;AES_CM_128_HMAC_SHA1_32&nbsp;inline:********MASKED***************&nbsp;<br>a=label:300&nbsp;<br>a=sprop&#45;source:0&nbsp;count=20;policies=as:1,al:2;lrotation=1;mavatar=1&nbsp;<br>a=sprop&#45;simul:0&nbsp;0&nbsp;*&nbsp;<br>a=rtcp&#45;fb:*&nbsp;ccm&nbsp;cisco&#45;scr&nbsp;<br>m=video&nbsp;15472&nbsp;RTP&#47;AVP&nbsp;110&nbsp;108&nbsp;<br>c=IN&nbsp;IP4&nbsp;207.182.188.200&nbsp;<br>b=TIAS:5000000&nbsp;<br>a=content:main&nbsp;<br>a=sendrecv&nbsp;<br>a=rtpmap:110&nbsp;H264&#47;90000&nbsp;<br>a=fmtp:110&nbsp;profile&#45;level&#45;id=640C14;packetization&#45;mode=1;max&#45;mbps=108000;max&#45;fs=3600;max&#45;fps=3000;max&#45;br=5000;max&#45;dpb=891;level&#45;asymmetry&#45;allowed=1&nbsp;<br>a=rtpmap:108&nbsp;H264&#47;90000&nbsp;<br>a=fmtp:108&nbsp;profile&#45;level&#45;id=424014;packetization&#45;mode=1;max&#45;mbps=108000;max&#45;fs=3600;max&#45;fps=3000;max&#45;br=5000;max&#45;dpb=891;level&#45;asymmetry&#45;allowed=1&nbsp;<br>a=rtcp&#45;fb:*&nbsp;nack&nbsp;pli&nbsp;<br>a=extmap:1&#47;sendrecv&nbsp;http:&#47;&#47;protocols.cisco.com&#47;virtualid&nbsp;<br>a=extmap:2&#47;sendrecv&nbsp;http:&#47;&#47;protocols.cisco.com&#47;framemarking&nbsp;<br>a=crypto:0&nbsp;AES_CM_128_HMAC_SHA1_32&nbsp;inline:********MASKED***************&nbsp;<br>a=label:200&nbsp;<br>a=sprop&#45;source:0&nbsp;count=20;policies=as:1,al:2;lrotation=1;mavatar=1&nbsp;<br>a=sprop&#45;source:100&nbsp;count=1;policies=rs:3;lrotation=0;mavatar=0&nbsp;<br>a=sprop&#45;simul:0&nbsp;0&nbsp;*&nbsp;<br>a=sprop&#45;simul:0&nbsp;1&nbsp;*&nbsp;<br>a=sprop&#45;simul:0&nbsp;2&nbsp;*&nbsp;<br>a=sprop&#45;simul:0&nbsp;3&nbsp;*&nbsp;<br>a=sprop&#45;simul:100&nbsp;100&nbsp;*&nbsp;<br>a=sprop&#45;simul:100&nbsp;101&nbsp;*&nbsp;<br>a=sprop&#45;simul:100&nbsp;102&nbsp;*&nbsp;<br>a=rtcp&#45;fb:*&nbsp;ccm&nbsp;cisco&#45;scr&nbsp;<br>m=video&nbsp;22936&nbsp;RTP&#47;AVP&nbsp;118&nbsp;<br>c=IN&nbsp;IP4&nbsp;207.182.188.200&nbsp;<br>b=TIAS:2000000&nbsp;<br>a=content:slides&nbsp;<br>a=sendrecv&nbsp;<br>a=rtpmap:118&nbsp;H264&#47;90000&nbsp;<br>a=fmtp:118&nbsp;profile&#45;level&#45;id=42401E;packetization&#45;mode=1;max&#45;mbps=108000;max&#45;fs=34560;max&#45;fps=3000;max&#45;br=2000;max&#45;dpb=3037;level&#45;asymmetry&#45;allowed=1&nbsp;<br>a=rtcp&#45;fb:*&nbsp;nack&nbsp;pli&nbsp;<br>a=extmap:1&#47;sendrecv&nbsp;http:&#47;&#47;protocols.cisco.com&#47;virtualid&nbsp;<br>a=extmap:2&#47;sendrecv&nbsp;http:&#47;&#47;protocols.cisco.com&#47;framemarking&nbsp;<br>a=crypto:2&nbsp;AES_CM_128_HMAC_SHA1_32&nbsp;inline:********MASKED***************&nbsp;<br>a=label:400&nbsp;<br>a=sprop&#45;source:0&nbsp;count=20;policies=as:1,al:2;lrotation=1;mavatar=1&nbsp;<br>a=sprop&#45;simul:0&nbsp;0&nbsp;*&nbsp;<br>a=sprop&#45;simul:0&nbsp;1&nbsp;*&nbsp;<br>a=sprop&#45;simul:0&nbsp;2&nbsp;*&nbsp;<br>a=sprop&#45;simul:0&nbsp;3&nbsp;*&nbsp;<br>a=rtcp&#45;fb:*&nbsp;ccm&nbsp;cisco&#45;scr&nbsp;<br>m=application&nbsp;21952&nbsp;UDP&#47;BFCP&nbsp;*&nbsp;<br>c=IN&nbsp;IP4&nbsp;207.182.188.200&nbsp;<br>a=connection:new&nbsp;<br>a=floorctrl:s&#45;only&nbsp;<br>a=floorid:10&nbsp;mstrm:400&nbsp;<br>a=confid:11&nbsp;<br>a=userid:20&nbsp;<br>a=setup:passive&nbsp;<br>a=fingerprint:sha&#45;1&nbsp;33:FE:63:2C:AE:E6:93:FF:86:D2:49:58:A8:2B:B0:B6:2C:82:B9:5C&nbsp;<br><br>sipMsgType:Response<br>transport:tcp<br></td>
+</tr>
+<tr>
+<td width='157'><b>DESCRIPTION:</b> </td>
+<td width='700'>CLOUDPROXY34</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>    
+
+
+<script>
+$(function(){
+	$('.formEntryCell').each(function() {
+		var rawMsg = $(this).html();
+		//rawMsg = format_json(rawMsg, false);
+		if(rawMsg.indexOf("service.note") > -1){
+		    console.log(rawMsg);
+            var obj = JSON.parse(rawMsg);
+            var payload = JSON.parse(obj.msg.payload);
+            var details = payload.details;
+            var converter = new showdown.Converter();
+            details = details.replace(/&lt;/gi, '<');
+            details = details.replace(/&gt;/gi, '>');
+            details = converter.makeHtml(details);
+            payload.details = details;
+            obj.msg.payload = payload;
+            rawMsg = JSON.stringify(obj);
+            rawMsg = rawMsg.replace(/\\n/gi, '<br/>');
+		}
+        rawMsg = format_str(rawMsg);
+		$(this).html(rawMsg);
+	})
+});
+</script>
+</body>
+</html>

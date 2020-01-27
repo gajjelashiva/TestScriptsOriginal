@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+
+<title>
+	Sign In - Webex
+</title>
+<script type="text/javascript" src="/idb/wwf/js/component_ffbc204eb8b8c20b1c0d483556979d98.js"></script>
+<script type="text/javascript" src="/idb/js/console_cfb0274999575ad33f5541e88b6414fd.js"></script>
+<link rel="stylesheet" href="/idb/css/idbstyle_service_default.css" type="text/css" />
+<script language="JavaScript" src="/idb/js/auth_symphony_2d4abaa2e52c97467cadb3b5d7cd222a.js"></script>
+<link rel="stylesheet" href="/idb/css/collab-ui_14aa171060ff838aa864e3a258ea231d.min.css" type="text/css" />
+<link rel="stylesheet" href="/idb/css/collab-ui-icons_450a2769f8d9aefecb8a1422bb997346.min.css" type="text/css" />
+<link rel="apple-touch-icon" sizes="180x180" href="/idb/favicons/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/idb/favicons/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/idb/favicons/favicon-16x16.png" />
+<link rel="manifest" href="/idb/favicons/manifest.json" />
+<link rel="mask-icon" href="/idb/favicons/safari-pinned-tab.svg" color="#07C1E4" />
+<link rel="shortcut icon" href="/idb/favicons/favicon.ico" />
+<meta name="msapplication-config" content="/idb/favicons/browserconfig.xml" />
+<meta name="theme-color" content="#ffffff" />
+<link rel="stylesheet" href="/idb/css/idbstyle_symphony_8a68aaea698a48fbb1d99f466b7dab98.css" type="text/css" />
+
+
+<!-- Ref: http://seclab.stanford.edu/websec/framebusting/framebust.pdf -->
+<style id="antiClickjack">body{display:none !important;}</style>
+<noscript><style id="antiClickjack">body{display:block !important;}</style></noscript>
+<script type="text/javascript">
+    if (self === top) {
+        var antiClickjack = document.getElementById("antiClickjack");
+        antiClickjack.parentNode.removeChild(antiClickjack);
+    } else {
+        top.location = self.location;
+    }
+</script>
+
+<script language="JavaScript">
+	var localeData = '[';
+	var nameValidated = false;
+	var redirectUrl = "https://idbroker.webex.com/idb/IdBGlobalLogin?goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fclient_id%3DCb58fc3fb03d26bcb605bf4126dca03c999c234f8c91af602cfb821df35a4049b%26redirect_uri%3Dhttps%3A%2F%2Fmatsbts.webex.com%2Frest%2Foauth2%2Flogin%26response_type%3Dcode%26scope%3DIdentity%3ASCIM%26state%3DrkfDpX&type=login";
+	
+	$(document).ready(function() {
+		var emailAddressHolder = "Email address";
+		bindFocusInOut($("#IDToken1"), emailAddressHolder); 
+		$("#IDToken1").focus();
+		
+		$(document).bind('keydown', function(event){
+	 		 var winevent = event || window.event;
+	 		 if (winevent.keyCode == 13) {	  			    
+	 		 	var targetID = winevent.target.id;
+	 		 	if(targetID === "IDToken1") {
+	 		 		var email = document.getElementById("IDToken1");
+	 		 		processForm();
+	 		 	}
+	 		 }
+	 	});
+		$("#cui-form").submit(function(e){
+			e.preventDefault();
+			if(nameValidated) {
+				processForm();
+			}
+		});
+		var cookieEmail = "";
+		if(cookieEmail.length > 0) {
+			$('#GlobalEmailLookupForm').find('input[id="email"]').val(cookieEmail);
+			$('#GlobalEmailLookupForm').find('input[id="isCookie"]').val("true");
+			$('#GlobalEmailLookupForm').submit();
+		}
+	});
+	
+	function validateName(name, nameId) {
+    	nameId = nameId.replace('IDToken' ,'');
+    	var divId = 'DivToken' + nameId;
+    	if(name.length > 0) {
+    		$.ajax({
+    			type: "POST",
+    			url: "/idb/validateEmail",
+    			data: { user: name, action: 'login', validate: "true" }
+    		})
+    		.done(function( responseData ) {
+    			if(responseData.status == 'invalid') {
+    				document.getElementById('nameContextualError'+nameId).innerHTML = "Enter a valid email address. Example: name@email.com"
+    				highlightErrorInputTextbox(divId);
+    			} else {
+    				nameValidated = true;
+    			}
+    		});
+    	} 
+    }
+	
+	function processForm() {
+		var email = $.trim(document.getElementById('IDToken1').value);
+		if(nameValidated) {
+			$('#GlobalEmailLookupForm').find('input[id="email"]').val(email);
+			$('#GlobalEmailLookupForm').submit();
+		} else {
+			if(email.length > 0) {
+	    		$.ajax({
+	    			type: "POST",
+	    			url: "/idb/validateEmail",
+	    			data: { user: email, action: 'login', validate: "true" }
+	    		})
+	    		.done(function( responseData ) {
+	    			if(responseData.status == 'invalid') {
+	    				document.getElementById('nameContextualError1').innerHTML = "Enter a valid email address. Example: name@email.com"
+	    				highlightErrorInputTextbox('DivToken1');
+	    			} else {
+	    				$('#GlobalEmailLookupForm').find('input[id="email"]').val(email);
+	    				$('#GlobalEmailLookupForm').submit();			
+	    			}
+	    		});
+	    	} 
+		}
+		return false;
+	}
+	
+	function bypassPage(email) {
+		$('#GlobalEmailLookupForm').find('input[id="email"]').val(email);
+		$('#GlobalEmailLookupForm').submit();
+	}
+</script>
+
+</head>
+
+<body id="login" class="cui cui--sites">
+	<div id="globalInfo" style="display:none;">
+		<div class="top-notice cross-platform-notice">
+			<div class="top-notice-inner" style="overflow:hidden;">
+				<div class="top-notice-s">
+					<i class="wwf-ic32 wwf-ic-info"></i>
+				</div>
+				<div class="top-notice-c">
+					It appears that cookies are not enabled on your computer, so some functions will not work. To enable cookies, change the privacy settings in your browser, and then refresh the page.
+				</div>
+				<a id="close_crossplatform_message" class="top-notice-close wwf-ic16 wwf-ic-close" href="javascript:;">
+					Close
+				</a>
+			</div>
+		</div>
+	</div>
+	<noscript>
+	<div>
+		<div class="top-notice cross-platform-notice">
+			<div class="top-notice-inner" style="overflow:hidden;">
+				<div class="top-notice-s">
+					<i class="wwf-ic32 wwf-ic-info"></i>
+				</div>
+				<div class="top-notice-c">
+					It appears that JavaScript is not enabled on your computer, so some functions will not work. To enable JavaScript, change the privacy settings in your browser, and then refresh the page.
+				</div>			
+			</div>
+		</div>
+	</div>
+	</noscript>
+	
+	<div class="cui-panel cui-panel--form cui-panel--full">
+		<div class="cui-panel__main">
+            <div class="cui-panel__image ci__logo"></div>
+			<div class="cui-panel__title">
+                Enter your email address
+            </div>
+			<form class="cui-panel__form" id="cui-form" novalidate="">
+                <div class="cui-input-group" id="DivToken1">
+				    <input class="cui-input" id="IDToken1" data-monitor-id="IDToken1"
+					    name="IDToken1" value="" autocomplete="email"
+					    placeholder="Email address"
+					    alt="Email address"
+					    onblur="validateName($.trim(this.value), this.id);" maxlength="512"
+					    type="email"> </input>
+                    <div class="cui-input__messages" id="DivErrorToken1">
+                        <div class="message" id="nameContextualError1">
+                            Enter the email address for your Webex account.
+                        </div>
+                    </div>
+                </div>
+                <div class="cui-panel__cta">
+                    <button name="btnOK" type="button" id="IDButton2"
+                            class="cui-button cui-button--blue" onClick="processForm();">
+                        Next
+                    </button>
+                </div>
+			</form>
+            
+		</div>
+
+		<form name="GlobalEmailLookup" id="GlobalEmailLookupForm" method="post" action="/idb/globalLogin">
+			<input type="hidden" id="email" name="email" value="" />
+			<input type="hidden" id="isCookie" name="isCookie" value="false" />
+		        <input type="hidden" id="ForceAuth" name="ForceAuth" value="false" />
+			<input type="hidden" id="cisService" name="cisService" value="common" />
+			
+				<input type="hidden" name="gotoUrl" value="aHR0cHM6Ly9pZGJyb2tlci53ZWJleC5jb20vaWRiL29hdXRoMi92MS9hdXRob3JpemU/Y2xpZW50X2lkPUNiNThmYzNmYjAzZDI2YmNiNjA1YmY0MTI2ZGNhMDNjOTk5YzIzNGY4YzkxYWY2MDJjZmI4MjFkZjM1YTQwNDliJnJlZGlyZWN0X3VyaT1odHRwczovL21hdHNidHMud2ViZXguY29tL3Jlc3Qvb2F1dGgyL2xvZ2luJnJlc3BvbnNlX3R5cGU9Y29kZSZzY29wZT1JZGVudGl0eTpTQ0lNJnN0YXRlPXJrZkRwWA==" />
+			
+			
+			<input type="hidden" id="encodedParamsString" name="encodedParamsString" value="dHlwZT1sb2dpbg==" />
+			
+			
+		  	
+		  	
+		</form>
+
+		
+
+
+
+
+
+
+
+
+
+
+
+<div id="footer" class="cui-panel__footer">
+    <img class="footer__logo" src="/idb/images/cisco-webex/lockup/cisco-webex-lockup-blue.svg" />
+    <div id="footer-links" class="footer__copyright">
+        By using Webex you accept the
+        
+            <a href="https://www.cisco.com/c/en/us/about/legal/cloud-and-software/cloud-terms.html" target="_blank">
+                Terms of Service
+            </a> &
+        
+        
+            <a href="https://www.cisco.com/web/siteassets/legal/privacy.html" target="_blank">
+                Privacy Statement
+            </a>.
+        
+        
+            <a href="https://www.webex.com" target="_blank">
+                Learn more about
+            </a> Webex
+        
+        
+        
+    </div>
+</div>
+
+
+
+	</div>
+</body>
+</html>

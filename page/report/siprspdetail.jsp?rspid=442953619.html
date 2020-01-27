@@ -1,0 +1,106 @@
+<script language=javascript>
+var strDocURL = document.URL;
+var host = location.host;
+if (strDocURL.indexOf("http://") == 0 && host.indexOf("webex.com") > 0)
+{  	
+   	strDocURL = "https://"+strDocURL.substring(7,strDocURL.length);
+	location.href = strDocURL;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+<html>
+<HEAD><TITLE>MATS 3.0</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../../style/style.css">
+<link rel="stylesheet" href="../../style/style_new.css">
+<link rel="stylesheet" href="../../style/bootstrap.min.css">
+
+<SCRIPT type="text/javascript" src="/plugin/jquery.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/format_json.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/showdown.min.js"></SCRIPT>
+</HEAD>
+<body>
+<table cellSpacing="3" cellPadding="5" width="98%" border="0" align="center">
+<tr height=40>
+<td> 
+	<img src="../../images/button_goback.gif" onclick="history.back()">
+</td>
+</tr>
+<tr>
+<td> 
+<table width=98%  border=0 align=center cellspacing=1 cellpadding=3 class='table table-bordered table-striped table-condensed table-hover man_table'>
+<tr>
+<td width='157'><b>Sip CallId:</b></td>
+<td width='700'>mats_140190854606273206</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_FROM:</b> </td>
+<td width='700'>172.18.248.190(CB)</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_TO:</b> </td>
+<td width='700'>127.0.0.1(Locus)</td>
+</tr>
+<tr>
+<td width='157'><b>START_TIME:</b> </td>
+<td width='700'>Wed Sep 25 09:54:07 GMT 2019</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_METHOD:</b> </td>
+<td width='700'>[PUT] /loci/4bc3538c-1060-35aa-b85d-8430d50bc779/controls</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_CSEQ:</b> </td>
+<td width='700'>http.req</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_RAWMSG:</b> </td>
+<td class='formEntryCell' width='700'>{"dst":{"payload":"{&quot;ip&quot;:&quot;127.0.0.1&quot;,&quot;port&quot;:23353,&quot;thread&quot;:&quot;nioconnector111&quot;}","type":"Locus"},"id":"lurl.https:&#47;&#47;locus&#45;a.wbx2.com&#47;locus&#47;api&#47;v1&#47;loci&#47;4bc3538c&#45;1060&#45;35aa&#45;b85d&#45;8430d50bc779","isTest":false,"msg":{"payload":"{&quot;ua&quot;:&quot;wbxcb&quot;,&quot;uid&quot;:&quot;6de3e1ab&#45;fc81&#45;4269&#45;8ec5&#45;f47e664b2ea9&quot;,&quot;tid&quot;:&quot;CB_d6b1f946&#45;ad4f&#45;42c4&#45;ad00&#45;1a8d47d02ca1_0&quot;,&quot;path&quot;:&quot;&#47;loci&#47;4bc3538c&#45;1060&#45;35aa&#45;b85d&#45;8430d50bc779&#47;controls&quot;,&quot;method&quot;:&quot;PUT&quot;}","type":"http.req"},"src":{"payload":"{&quot;ip&quot;:&quot;172.18.248.190&quot;,&quot;port&quot;:44754}","type":"CB"},"time":"2019&#45;09&#45;25T09:54:07.354Z"}</td>
+</tr>
+<tr>
+<td width='157'><b>DESCRIPTION:</b> </td>
+<td width='700'>CMR4Spark</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>    
+
+
+<script>
+$(function(){
+	$('.formEntryCell').each(function() {
+		var rawMsg = $(this).html();
+		//rawMsg = format_json(rawMsg, false);
+		if(rawMsg.indexOf("service.note") > -1){
+		    console.log(rawMsg);
+            var obj = JSON.parse(rawMsg);
+            var payload = JSON.parse(obj.msg.payload);
+            var details = payload.details;
+            var converter = new showdown.Converter();
+            details = details.replace(/&lt;/gi, '<');
+            details = details.replace(/&gt;/gi, '>');
+            details = converter.makeHtml(details);
+            payload.details = details;
+            obj.msg.payload = payload;
+            rawMsg = JSON.stringify(obj);
+            rawMsg = rawMsg.replace(/\\n/gi, '<br/>');
+		}
+        rawMsg = format_str(rawMsg);
+		$(this).html(rawMsg);
+	})
+});
+</script>
+</body>
+</html>

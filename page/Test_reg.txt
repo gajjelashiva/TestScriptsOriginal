@@ -1,0 +1,518 @@
+package com.cisco.webex.testcase.train.ec.schedule;
+
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import com.cisco.webex.test.framework.tareport.annotation.WbxCase;
+import com.cisco.webex.test.runner.testcase.annotation.CaseLevel;
+import com.cisco.webex.testcase.train.common.TrainURLAPICommon;
+import com.cisco.webex.testcase.train.common.ecPage.common.EC_Schedule_Common;
+import com.cisco.webex.uiframework.WebexAssert;
+import com.cisco.webex.uiframework.function.annotation.Owner;
+import com.cisco.webex.uiframework.function.annotation.UserStory;
+import com.cisco.webex.uiframework.function.annotation.WebdriverClassRunner;
+
+
+@RunWith(WebdriverClassRunner.class)
+public class ScheduleWithDifferentOption extends EC_Schedule_Common {
+	private SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+	private String eventName = "ec_name_" + sdf.format(new Date());
+	private String eventNumber;
+	private String eventPwd = "Aa@1234";
+	private TrainURLAPICommon urlapi;	
+	private  String  SUPPORT_UCF_RICHMEDIA_CHB = "//input[@name='supportUCFRichMediaCHB']";
+    private String EVENT_DESCRIPTION = "//textarea[@name='description']";
+	private String path = System.getProperty("user.dir");
+	private String filePath = path + "\\ext\\eventcenter\\Cisco_survey.jpg";
+    private String materialPath = path+ "\\ext\\eventcenter\\SITE_ADMIN-TechDocument.docx";
+    private String DELETE_UPLOADED_FILE = "//a[contains(@href,removeFile)] [contains(@href,'SITE_ADMIN-TechDocument.docx')]";
+    private String DELETE_UPLOADED_IMAGE_MATERIAL = "//a[contains(@href,removeFile)] [contains(@href,'Cisco_survey.jpg')]";
+    private String UPLOADED_IMAGE_LINK = "//a[contains(@href,'Cisco_survey.jpg')]";
+	private String CLICK_BROWSE= "//input[@type='file']";
+	private String UPLOAD_FILE  = "//input[contains(@name,'upload')]";
+	private String  DELETE_DESCRIPTION_IMAGE = "//a[contains(@href,'DeleteDescriptionImg')]";
+	private String PRESENTER_IMAGE_DELTE = "//a[contains(@href,'DeleteDescriptionImg')]";
+	private String MATERIAL_LINK = "//a[contains(@href,'SITE_ADMIN-TechDocument')]";
+    private String REMOVE_EVENT_MATERIAL_SCHEDULE_PAGE = "//a[contains(@href,'removeEventMaterial')]";
+    private String DESCRIPTION_EVENT_MATERIAL = "//a[contains(@href,'SITE_ADMIN-TechDocument')]/../../../td[2]/input";
+    private String INVITEFRINDS  =  "input[name='inviteFriendsCHB']";
+    private String MAXNUMBEROFPARTICIPANTS = "input[name='allowAttendeeMaxNum']";
+	private String PASSWORDNEEDED = "//input[contains(@onclick,'SetValueNeedPwdYes')]";
+	private String REGISTRATIONPASSWORD = "input[name='regPassword']";
+	private String ENROLLREGISTEREDID  = "enrollmentRequiredYes";
+	private String PANELISTINFO = "input[name='presenterDes']";
+	private String ALLOWPANELISTUPLOADDOC = "input[name='uploadFilesCHB']";
+	
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title="Schedule regist event audio conference type is VOIP ", description = "Login -> go to eventCenter ->schedule a regist event -> select audio conference type voip ")
+	public void scheduleRegistEventconfVoip(){
+		this.init();
+		this.doLogin(site, user, password, userEmail);
+		this.goECPage();
+		this.goSchduleECPage();
+		this.fillBasicInfo("default", this.eventName, true, false, true, this.eventPwd, "default");
+		this.selectVoip();
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		System.out.println("going to delete the event");
+		this.deleteEventViaApi(eventNumber);
+		this.doLogout(site);
+	}
+
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title="Schedule register event audio conference type is other telephony", description = "Login -> go to eventCenter ->schedule a regist event ->verify list event from meeting detail page")
+	public void scheduleRegistEventConfTelephony(){
+		this.init();
+		this.doLogin(site, user, password, userEmail);
+		this.goECPage();
+		this.goSchduleECPage();
+		this.fillBasicInfo("default", this.eventName, true, false, true, this.eventPwd, "default");
+		this.selectOtherTele();
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		System.out.println("going to delete the event");
+		this.deleteEventViaApi(eventNumber);
+		this.doLogout(site);
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title="Schedule register event with audio conference type is VOIP", description = "Login -> go to eventCenter ->schedule a register event ->verify list event from meeting detail page")
+	public void scheduleRegistEventConfAudioNone(){
+		this.init();
+		this.doLogin(site, user, password, userEmail);
+		this.goECPage();
+		this.goSchduleECPage();
+		this.fillBasicInfo("default", this.eventName, true, false, true, this.eventPwd, "default");
+		this.selectNoneAudio();
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+		this.doLogout(site);
+	}
+	
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event with attendee join  minutes before schedule", description = "Login -> go to eventCenter ->schedule a register event -> fill basic details --> Check schedule event minutes before schedule ")
+	public void scheduleanEventwithAttendeejoinBeforeminutes() {
+		
+		this.init();
+		this.doLogin(site, user, password, userEmail);
+		this.goECPage();
+		this.goSchduleECPage();
+		this.fillBasicInfo("default", this.eventName, true, false, true, this.eventPwd, "default");
+		this.checkminutesbeforeschdule();
+		this.assertTrue("The check box for with attendee join  minutes before schedule is not checked", this.isSelected("//input[@name='enableBeforeTime']"));
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event with attendee join Ten minutes before schedule", description = "Login -> go to eventCenter ->schedule a register event -> fill basic details --> Check schedule event minutes before schedule --> Select 10 min -->Click on schedule")
+	public void scheduleanEventwithAttendeejoinTenBeforeminutes() {
+		
+		this.init();
+		this.doLogin(site, user, password, userEmail);
+		this.goECPage();
+		this.goSchduleECPage();
+		this.fillBasicInfo("default", this.eventName, true, false, true, this.eventPwd, "default");
+		this.selectDropdownListByValue("//select[@name='beforetime']","10");
+		this.assertTrue("The check box for with attendee join  minutes before schedule is not checked", this.isSelected("//input[@name='enableBeforeTime']"));
+		this.assertEquals("Schedule an event with attendee join Ten minutes before schedule drop down is not selected ", "10", this.getDropdownListSelectedValue("//select[@name='beforetime']"));
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event by selecting Do not allow attendees to share rich media files in this event", description = "Login -> go to eventCenter ->schedule a regist event -> fill basic deatils --> check Do not allow attendees to share rich media files in this event -->Click on schedule")
+	public void scheduleanEventwithAttendeeNotToShareRichMedia() {
+		
+		this.init();
+		this.doLogin(site, user, password, userEmail);
+		this.goECPage();
+		this.goSchduleECPage();
+		this.fillBasicInfo("default", this.eventName, true, false, true, this.eventPwd, "default");
+		this.clickElement(SUPPORT_UCF_RICHMEDIA_CHB);
+		this.assertTrue("The check box for  Do not allow attendees to share rich media files in this event is not checked", this.isSelected(SUPPORT_UCF_RICHMEDIA_CHB));
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event by with about event description", description = "Login -> go to eventCenter ->schedule a regist event -> fill basic deatils -->  event description  -->Click on schedule")
+	public void scheduleanEventwithDescriptions() {
+		//Need to add assert
+		String eventDescription = "This event is about webex please feel free to forward to others";
+		navigateECAndSchduleEvent();
+		this.typeElement(EVENT_DESCRIPTION,eventDescription);
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.goEventSearchPage();
+		this.searchWithEventName(eventNumber);
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event by with uploading the picture about event description", description = "Login -> go to eventCenter ->schedule a regist event -> fill basic deatils --> Click on upload event description picture -->Select the image-->Click on schedule")
+	public void scheduleanEventwithDescriptionPicture() {
+		//Need to add assert
+		String eventDescription = "This event is about webex please feel free to forward to others";
+		navigateECAndSchduleEvent();
+		this.typeElement(EVENT_DESCRIPTION,eventDescription);
+		this.clickOnUploadDescriptionImageInSchdule();
+		this.sendKeysAsString(CLICK_BROWSE, filePath);
+		this.clickElement(UPLOAD_FILE);
+		this.backMainWindow();
+        this.switchIframe("mainFrame -> main");
+        WebexAssert.assertTrue("The description image which is not uploaded" , this.isElement(DELETE_DESCRIPTION_IMAGE));
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event by with uploading the picture Of presenter", description = "Login -> go to eventCenter ->schedule a regist event -> fill basic deatils --> Click on upload picture of presenter-->Select the image-->Click on schedule")
+	public void scheduleanEventwithPresenterPicture() {
+		//Need to add assert
+		navigateECAndSchduleEvent();
+		this.clickOnUploadPictureOfPresenterInSchdule();
+		this.sendKeysAsString(CLICK_BROWSE, filePath);
+		this.clickElement(UPLOAD_FILE);
+		this.backMainWindow();
+        this.switchIframe("mainFrame -> main");
+        WebexAssert.assertTrue("The description image which is not uploaded" , this.isElement(DELETE_DESCRIPTION_IMAGE));
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event by with uploading the picture about event description and delete once uploaded", description = "Login -> go to eventCenter ->schedule a regist event -> fill basic deatils --> Click on upload event description picture -->Select the image-->Delete-->Click on schedule")
+	public void scheduleanEventwithDescriptionPictureAndDeleteThePic() {
+		navigateECAndSchduleEvent();
+		this.clickOnUploadDescriptionImageInSchdule();
+		this.sendKeysAsString(CLICK_BROWSE, filePath);
+		this.clickElement(UPLOAD_FILE);
+		this.backMainWindow();
+        this.switchIframe("mainFrame -> main");
+        if (this.isElement(DELETE_DESCRIPTION_IMAGE)) {
+        	this.clickElement(DELETE_DESCRIPTION_IMAGE);
+        	if (this.isAlert()) {
+        		this.clickAlert(true);
+        		this.sleep(2000);
+        	}
+        }
+        WebexAssert.assertFalse("The description image which is uploaded is not deleted", this.isElement(DELETE_DESCRIPTION_IMAGE));
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event by with uploading the picture of the presenter and delete once uploaded", description = "Login -> go to eventCenter ->schedule a regist event -> fill basic deatils --> Click on upload presenter picture -->Select the image-->Delete-->Click on schedule")
+	public void scheduleanEventwithPresenterPictureAndDeleteThePic() {
+		navigateECAndSchduleEvent();
+		this.clickOnUploadDescriptionImageInSchdule();
+		this.sendKeysAsString(CLICK_BROWSE, filePath);
+		this.clickElement(UPLOAD_FILE);
+		this.backMainWindow();
+        this.switchIframe("mainFrame -> main");
+        if (this.isElement(PRESENTER_IMAGE_DELTE)) {
+        	this.clickElement(PRESENTER_IMAGE_DELTE);
+        	if (this.isAlert()) {
+        		this.clickAlert(true);
+        		this.sleep(2000);
+        	}
+        }
+        WebexAssert.assertFalse("The Presenter image which is uploaded is not deleted", this.isElement(PRESENTER_IMAGE_DELTE));
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event by with uploading the event material", description = "Login -> go to eventCenter ->schedule a regist event -> fill basic deatils --> Click on upload event material-->Select the event material--Upload and then Add-->Click on schedule")
+	public void scheduleanEventwithEventMaterial() {
+		navigateECAndSchduleEvent();
+		uploadMaterialInSchedulePage(materialPath);
+		this.clickAddInUploadButtonEventMaterial();
+		this.backMainWindow();
+        this.switchIframe("mainFrame -> main");
+        WebexAssert.assertTrue("The Material might not be uploaded", this.isElement(MATERIAL_LINK));
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event by with uploading the event material and delete in schdule page", description = "Login -> go to eventCenter ->schedule a regist event -> fill basic deatils --> Click on upload event material-->Select the event material--Upload and then Add-->Click on Delte on schedule page-->Click on schedule")
+	public void scheduleanEventwithEventMaterialAndDeleteInSchdulePage() {
+		navigateECAndSchduleEvent();
+		uploadMaterialInSchedulePage(materialPath);
+		this.clickAddInUploadButtonEventMaterial();
+		this.backMainWindow();
+        this.switchIframe("mainFrame -> main");
+        WebexAssert.assertTrue("The Material might not be uploaded", this.isElement(MATERIAL_LINK));
+        WebexAssert.assertTrue("The delete button in schdule is not present", this.isElement(REMOVE_EVENT_MATERIAL_SCHEDULE_PAGE));
+        this.clickElement(REMOVE_EVENT_MATERIAL_SCHEDULE_PAGE);
+        this.clickAlert(true);
+        WebexAssert.assertFalse("The Material might not be delted", this.isElement(MATERIAL_LINK));
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event by with uploading the event material Add Description In schedulePage", description = "Login -> go to eventCenter ->schedule a regist event -> fill basic deatils --> Click on upload event material-->Select the event material--Upload and then Add-->Add description-->--Click on schedule")
+	public void scheduleanEventwithEventMaterialAddDescriptionInschedulePage() {
+		String descriptionEventMaterial = "Site admin Basics";
+		navigateECAndSchduleEvent();
+		uploadMaterialInSchedulePage(materialPath);
+		this.clickAddInUploadButtonEventMaterial();
+		this.backMainWindow();
+        this.switchIframe("mainFrame -> main");
+        WebexAssert.assertTrue("The Material might not be uploaded", this.isElement(MATERIAL_LINK));
+        this.typeElement(DESCRIPTION_EVENT_MATERIAL, descriptionEventMaterial);
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P1")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title = "Schedule an event by uploading Two Event Materials ", description = "Login -> go to eventCenter ->schedule a regist event -> fill basic deatils --> Click on upload event material-->Select the event material--Upload two files and then Add-->-->--Click on schedule")
+	public void scheduleanEventwithTwoEventMaterials() {
+		navigateECAndSchduleEvent();
+		uploadMaterialInSchedulePage(materialPath);
+		this.sendKeysAsString(CLICK_BROWSE, filePath);
+		this.clickElement(UPLOAD_FILE);
+		this.sleep(5000);
+		//Check if the file is already uploaded and present if yes delete the file first and then upload it again.
+		if (this.isAlert()) {
+			this.clickAlert(true);
+			this.clickElement(DELETE_UPLOADED_IMAGE_MATERIAL);
+			this.clickAlert(true);
+			this.sendKeysAsString(CLICK_BROWSE, filePath);
+			this.clickElement(UPLOAD_FILE);
+		}
+        this.clickElement("//input[contains(@value,'SITE_ADMIN-TechDocument.docx')]");
+		this.clickAddInUploadButtonEventMaterial();
+		this.backMainWindow();
+        this.switchIframe("mainFrame -> main");
+        WebexAssert.assertTrue("The Material might not be uploaded", this.isElement(MATERIAL_LINK));
+        WebexAssert.assertTrue("The Iamge for material might not be uploaded", this.isElement(UPLOADED_IMAGE_LINK));
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+	}
+	
+	private void init() {		
+		// initial required classes
+		urlapi = new TrainURLAPICommon();	
+	}
+	
+	public void navigateECAndSchduleEvent() {
+		this.init();
+		this.doLogin(site, user, password, userEmail);
+		this.goECPage();
+		this.goSchduleECPage();
+		this.fillBasicInfo("default", this.eventName, true, false, true, this.eventPwd, "default");
+	}
+	private void deleteEventViaApi(String meetingKey){
+		urlapi.apiChangeToECService();
+		urlapi.apiDeleteEvent(meetingKey);
+	}
+	
+	private void uploadMaterialInSchedulePage(String MaterialPath) {
+		this.clickOnUploadPMaterialInSchdule();
+		this.sendKeysAsString(CLICK_BROWSE, MaterialPath);
+		this.clickElement(UPLOAD_FILE);
+		this.sleep(5000);
+		//Check if the file is already uploaded and present if yes delete the file first and then upload it again.
+		if (this.isAlert()) {
+			this.clickAlert(true);
+			this.clickElement(DELETE_UPLOADED_FILE);
+			this.clickAlert(true);
+			this.sendKeysAsString(CLICK_BROWSE, MaterialPath);
+			this.clickElement(UPLOAD_FILE);
+			this.sleep(3000);
+		}
+		
+	}
+	
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P2")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title="Schedule register event with Allow registrants to invite friends to this event", description = "Login -> go to eventCenter ->schedule a register event ->Uncheck Allow registrants to invite friends to this event-->verify list event from meeting detail page")
+	public void scheduleEventWithAllowInviteFriendsToFalse(){
+		this.navigateECAndSchduleEvent();
+		if (this.isElement(INVITEFRINDS)) {
+			this.clickElement(INVITEFRINDS);
+		}
+		this.scheduleEventAndDelete();
+	
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P2")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title="Schedule register event with Maximum number of registrants to non default value", description = "Login -> go to eventCenter ->schedule a register event ->Change Maximum number of registrants-->verify list event from meeting detail page")
+	public void scheduleEventWithMaxNNumberOfParticipants(){
+		this.navigateECAndSchduleEvent();
+		if (this.isElement(MAXNUMBEROFPARTICIPANTS)) {
+			this.clearElement(MAXNUMBEROFPARTICIPANTS);
+			this.typeElement(MAXNUMBEROFPARTICIPANTS, "5000");
+		}
+		WebexAssert.assertEquals("The value of max number of participant is not entered",this.getTextFromElement(MAXNUMBEROFPARTICIPANTS), "5000");
+		this.scheduleEventAndDelete();
+	
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P2")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title="Schedule register event wit hRegistration Password", description = "Login -> go to eventCenter ->schedule a register event ->Enter Registration Password-->verify list event from meeting detail page")
+	public void scheduleEventWithRegistrationPassword(){
+		String registrationPassword = "testwebex123";
+		this.navigateECAndSchduleEvent();
+		if (this.isElement(PASSWORDNEEDED)) {
+			this.clickElement(PASSWORDNEEDED);
+			this.typeElement(REGISTRATIONPASSWORD, registrationPassword);
+		}
+		this.sleep(2000);
+		WebexAssert.assertEquals("The password is not matched  ",this.getTextFromElement(REGISTRATIONPASSWORD).replace(" ", ""), registrationPassword);
+		this.scheduleEventAndDelete();
+	
+	}
+	
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P2")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title="Schedule register event with Registration ID", description = "Login -> go to eventCenter ->schedule a register event ->Enable Enter Registration ID-->verify list event from meeting detail page")
+	public void scheduleEventWithRegistrationID(){
+		this.navigateECAndSchduleEvent();
+		if (this.isElement(ENROLLREGISTEREDID)) {
+			this.clickElement(ENROLLREGISTEREDID);	
+		}
+		this.scheduleEventAndDelete();
+	
+	}
+	
+	@Test
+@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P2")
+@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title="Schedule register event with Panelist Info", description = "Login -> go to eventCenter ->schedule a register event ->Enter Panelist Info-->Cick Schedule Event-->verify list event from meeting detail page")
+	public void scheduleEventWithPanelistInfo(){
+		String panelistInfo = "<h1>test_user1</h1></h2>Event center Basics</h2>";
+		this.navigateECAndSchduleEvent();
+		if (this.isElement(PANELISTINFO)) {
+			this.clearElement(PANELISTINFO);
+			this.typeElement(PANELISTINFO, panelistInfo);
+		}
+		this.sleep(2000);
+		WebexAssert.assertEquals("The password is not matched  ",this.getTextFromElement(PANELISTINFO).replace(" ", ""), panelistInfo);
+		this.scheduleEventAndDelete();
+	
+	}
+	
+	@Test
+	@UserStory(storyId = "")
+	@Owner(name = "Shiva", email = "sgajjela@cisco.com")
+	@CaseLevel(level = "P2")
+	@WbxCase(keyflow = {"3.2" }, features = {}, bugs = {}, status = "TA",title="Schedule register event with Allow panelists to upload documents associated with the event", description = "Login -> go to eventCenter ->schedule a register event ->check Allow panelists to upload documents-->verify list event from meeting detail page")
+	public void scheduleEventWithPanelistUploadDocuments(){
+		this.navigateECAndSchduleEvent();
+		if (this.isElement(ALLOWPANELISTUPLOADDOC)) {
+			this.clickElement(ALLOWPANELISTUPLOADDOC);
+		}
+		this.scheduleEventAndDelete();
+	
+	}
+	//input[@name='panelistPWD']
+	//input[@name='panelistConfirmPWD']
+	private void scheduleEventAndDelete() {
+		this.scheduleEvent();
+		this.eventNumber = this.getEventNumber();
+		this.verifyElement("ec_eventInfo_registration_btn");
+		this.deleteEventViaApi(eventNumber);
+		this.doLogout(site);
+		
+	}     
+	
+	
+}

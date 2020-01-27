@@ -1,0 +1,106 @@
+<script language=javascript>
+var strDocURL = document.URL;
+var host = location.host;
+if (strDocURL.indexOf("http://") == 0 && host.indexOf("webex.com") > 0)
+{  	
+   	strDocURL = "https://"+strDocURL.substring(7,strDocURL.length);
+	location.href = strDocURL;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+<html>
+<HEAD><TITLE>MATS 3.0</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../../style/style.css">
+<link rel="stylesheet" href="../../style/style_new.css">
+<link rel="stylesheet" href="../../style/bootstrap.min.css">
+
+<SCRIPT type="text/javascript" src="/plugin/jquery.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/format_json.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/showdown.min.js"></SCRIPT>
+</HEAD>
+<body>
+<table cellSpacing="3" cellPadding="5" width="98%" border="0" align="center">
+<tr height=40>
+<td> 
+	<img src="../../images/button_goback.gif" onclick="history.back()">
+</td>
+</tr>
+<tr>
+<td> 
+<table width=98%  border=0 align=center cellspacing=1 cellpadding=3 class='table table-bordered table-striped table-condensed table-hover man_table'>
+<tr>
+<td width='157'><b>Sip CallId:</b></td>
+<td width='700'>0ca6ebbe7b29c1a1a4e30288834123fd@127.0.0.1</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_FROM:</b> </td>
+<td width='700'>209.197.207.5(eCPCCP-public)</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_TO:</b> </td>
+<td width='700'>10.240.215.61</td>
+</tr>
+<tr>
+<td width='157'><b>START_TIME:</b> </td>
+<td width='700'>Wed Sep 25 09:54:44 GMT 2019</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_METHOD:</b> </td>
+<td width='700'>200</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_CSEQ:</b> </td>
+<td width='700'>1 INVITE</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_RAWMSG:</b> </td>
+<td class='formEntryCell' width='700'>CSEQ:1&nbsp;INVITE<br>Call&#45;ID:0ca6ebbe7b29c1a1a4e30288834123fd@127.0.0.1<br>Session&#45;ID:df8b3e9cfeb23cf699900eab86c2fcc0;remote=4c19c1e59f1166f9a0263d2bc56158f8<br>callMediaType:audio<br>callType:Cascade<br>calledNumber:Z08Rw8Yoa.SqCCBokxl9nqCQ<br>callingNumber:l2sip&#45;UA<br>code:200<br>contentLength:1324<br>cseqMethod:INVITE<br>direction:OUT<br>Contact:&quot;Cisco&nbsp;Webex&nbsp;Meeting&quot;&lt;sip:4156550000@10.120.172.27:5060;transport=udp&gt;;isfocus;sip.cisco.multistream<br>Content&#45;Type:application&#47;sdp<br>From:&quot;WX2&nbsp;L2SIP&quot;&nbsp;&lt;sip:l2sip&#45;UA@127.0.0.1:22618;transport=tls&gt;;tag=1780848587<br>Max&#45;Forwards:70<br>Record&#45;Route:&lt;sip:rr$n=net_tahoe_udp@10.121.74.188:5060;transport=tcp;lr&gt;,&lt;sip:rr$n=net_me_tcp@209.197.207.5:5065;transport=tls;lr&gt;<br>Session&#45;Expires:1800;refresher=uas<br>Supported:timer<br>To:&lt;sip:Z08Rw8Yoa.SqCCBokxl9nqCQ@bts&#45;tap.webex.com&gt;;tag=222f481a31dc3070+10.120.172.27+IVRTAS_10.120.172.30<br>Via:SIP&#47;2.0&#47;TLS&nbsp;l2sip&#45;e1&#45;01.wbx2.com:5061;branch=z9hG4bKbe7b0a3033b6d859df603e4df3c10bb1<br>Via:SIP&#47;2.0&#47;TLS&nbsp;127.0.0.1:22618;branch=z9hG4bK&#45;353332&#45;18f4a6d5926a8475f71cb02fa38c9f78;rport=60161<br><br>hostAndLocalIPSame:false<br>isInternallyGenerated:false<br>isMidCall:false<br>isMsgRetransmitted:false<br>localAlias:cloudProxyv1.0.497<br>localIPAddress:209.197.207.5<br>localPort:5065<br>localSessionID:df8b3e9cfeb23cf699900eab86c2fcc0<br>method:200<br>reason:200&nbsp;OK<br>reasonCause:0<br>remoteIPAddress:10.240.215.61<br>remotePort:39591<br>remoteSessionID:4c19c1e59f1166f9a0263d2bc56158f8<br>ruriHost:bts&#45;tap.webex.com<br>ruriUser:Z08Rw8Yoa.SqCCBokxl9nqCQ<br>v=0&nbsp;<br>o=TAS&nbsp;1569405284&nbsp;1569405289&nbsp;IN&nbsp;IP4&nbsp;10.120.172.27&nbsp;<br>s=&#45;&nbsp;<br>c=IN&nbsp;IP4&nbsp;10.120.172.27&nbsp;<br>b=AS:4000&nbsp;<br>t=0&nbsp;0&nbsp;<br>m=audio&nbsp;18380&nbsp;RTP&#47;SAVP&nbsp;98&nbsp;101&nbsp;<br>c=IN&nbsp;IP4&nbsp;10.120.172.82&nbsp;<br>a=rtpmap:98&nbsp;opus&#47;48000&#47;2&nbsp;<br>a=fmtp:98&nbsp;usedtx=1;useinbandfec=1&nbsp;<br>a=rtpmap:101&nbsp;telephone&#45;event&#47;8000&nbsp;<br>a=fmtp:101&nbsp;0&#45;15&nbsp;<br>a=crypto:2&nbsp;AES_CM_128_HMAC_SHA1_32&nbsp;inline:********MASKED***************&nbsp;<br>a=content:main&nbsp;<br>a=ptime:20&nbsp;<br>a=extmap:1&#47;sendrecv&nbsp;http:&#47;&#47;protocols.cisco.com&#47;virtualid&nbsp;<br>a=sprop&#45;source:0&nbsp;count=3;policies=as:1&nbsp;<br>a=sprop&#45;simul:0&nbsp;0&nbsp;*&nbsp;<br>a=rtcp&#45;fb:*&nbsp;ccm&nbsp;cisco&#45;scr&nbsp;<br>m=audio&nbsp;0&nbsp;RTP&#47;AVP&nbsp;*&nbsp;<br>m=video&nbsp;10000&nbsp;RTP&#47;AVP&nbsp;98&nbsp;111&nbsp;126&nbsp;<br>c=IN&nbsp;IP4&nbsp;66.114.171.191&nbsp;<br>b=AS:2000&nbsp;<br>b=TIAS:4000000&nbsp;<br>a=rtpmap:98&nbsp;H264&#45;SVC&#47;90000&nbsp;<br>a=fmtp:98&nbsp;max&#45;br=3250;max&#45;fps=3000;max&#45;fs=3600;max&#45;mbps=108000;packetization&#45;mode=1;profile&#45;level&#45;id=428016;uc&#45;mode=1&nbsp;<br>a=rtpmap:111&nbsp;x&#45;ulpfecuc&#47;90000&nbsp;<br>a=fmtp:111&nbsp;m=8;max_esel=1440;max_n=32&nbsp;<br>a=rtpmap:126&nbsp;H264&#47;90000&nbsp;<br>a=fmtp:126&nbsp;max&#45;br=2000;max&#45;dpb=5400;max&#45;fs=3600;max&#45;mbps=108000;packetization&#45;mode=1;profile&#45;level&#45;id=42e014&nbsp;<br>a=sprop&#45;source:1&nbsp;csi=2637187585&nbsp;<br>a=sprop&#45;simul:1&nbsp;1&nbsp;98&nbsp;max&#45;br=4000000;max&#45;fs=3600;max&#45;mbps=116000&nbsp;<br>a=rtcp&#45;fb:*&nbsp;nack&nbsp;pli&nbsp;<br>a=rtcp&#45;fb:*&nbsp;ccm&nbsp;cisco&#45;scr&nbsp;<br>a=extmap:1&nbsp;http:&#47;&#47;protocols.cisco.com&#47;virtualid&nbsp;<br>a=extmap:2&nbsp;http:&#47;&#47;protocols.cisco.com&#47;framemarking&nbsp;<br>a=label:11&nbsp;<br>a=sendrecv&nbsp;<br>a=content:main&nbsp;<br>m=video&nbsp;0&nbsp;RTP&#47;AVP&nbsp;*&nbsp;<br>m=application&nbsp;0&nbsp;UDP&#47;BFCP&nbsp;*&nbsp;<br><br>serviceType:spark&#45;mm<br>sipMsgType:Response<br>transport:tls<br></td>
+</tr>
+<tr>
+<td width='157'><b>DESCRIPTION:</b> </td>
+<td width='700'>CLOUDPROXY34</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>    
+
+
+<script>
+$(function(){
+	$('.formEntryCell').each(function() {
+		var rawMsg = $(this).html();
+		//rawMsg = format_json(rawMsg, false);
+		if(rawMsg.indexOf("service.note") > -1){
+		    console.log(rawMsg);
+            var obj = JSON.parse(rawMsg);
+            var payload = JSON.parse(obj.msg.payload);
+            var details = payload.details;
+            var converter = new showdown.Converter();
+            details = details.replace(/&lt;/gi, '<');
+            details = details.replace(/&gt;/gi, '>');
+            details = converter.makeHtml(details);
+            payload.details = details;
+            obj.msg.payload = payload;
+            rawMsg = JSON.stringify(obj);
+            rawMsg = rawMsg.replace(/\\n/gi, '<br/>');
+		}
+        rawMsg = format_str(rawMsg);
+		$(this).html(rawMsg);
+	})
+});
+</script>
+</body>
+</html>

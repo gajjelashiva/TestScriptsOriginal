@@ -1,0 +1,106 @@
+<script language=javascript>
+var strDocURL = document.URL;
+var host = location.host;
+if (strDocURL.indexOf("http://") == 0 && host.indexOf("webex.com") > 0)
+{  	
+   	strDocURL = "https://"+strDocURL.substring(7,strDocURL.length);
+	location.href = strDocURL;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+<html>
+<HEAD><TITLE>MATS 3.0</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="../../style/style.css">
+<link rel="stylesheet" href="../../style/style_new.css">
+<link rel="stylesheet" href="../../style/bootstrap.min.css">
+
+<SCRIPT type="text/javascript" src="/plugin/jquery.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/format_json.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="/plugin/showdown.min.js"></SCRIPT>
+</HEAD>
+<body>
+<table cellSpacing="3" cellPadding="5" width="98%" border="0" align="center">
+<tr height=40>
+<td> 
+	<img src="../../images/button_goback.gif" onclick="history.back()">
+</td>
+</tr>
+<tr>
+<td> 
+<table width=98%  border=0 align=center cellspacing=1 cellpadding=3 class='table table-bordered table-striped table-condensed table-hover man_table'>
+<tr>
+<td width='157'><b>Sip CallId:</b></td>
+<td width='700'>b3525ed96a2a5f71@127.0.0.1</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_FROM:</b> </td>
+<td width='700'>209.197.207.4(eCP-public)</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_TO:</b> </td>
+<td width='700'>173.37.147.141(VCS-E)</td>
+</tr>
+<tr>
+<td width='157'><b>START_TIME:</b> </td>
+<td width='700'>Wed Sep 25 09:54:44 GMT 2019</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_METHOD:</b> </td>
+<td width='700'>ACK</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_CSEQ:</b> </td>
+<td width='700'>4 ACK</td>
+</tr>
+<tr>
+<td width='157'><b>SIP_RAWMSG:</b> </td>
+<td class='formEntryCell' width='700'>CSEQ:4&nbsp;ACK<br>Call&#45;ID:80bad6692e6434121f40135032607f1d@10.120.172.18<br>Session&#45;ID:4c19c1e59f1166f9a0263d2bc56158f8;remote=c3348ec141855f15a0f6868807b14b24<br>calledNumber:89023844<br>callingNumber:automation69<br>code:0<br>contentLength:0<br>cseqMethod:ACK<br>direction:OUT<br>From:&quot;Automation69&nbsp;Pass&apos;s&nbsp;Personal&nbsp;Room&quot;&nbsp;&lt;sip:automation69@bts&#45;tap.webex.com&gt;;tag=80bad6692e643412<br>Max&#45;Forwards:69<br>Route:&lt;sip:proxy&#45;call&#45;id=b2adc5d2&#45;1ec3&#45;4ca4&#45;a3c8&#45;0f4501d87fd4@173.37.147.141:5061;transport=tls;lr&gt;,&lt;sip:proxy&#45;call&#45;id=b2adc5d2&#45;1ec3&#45;4ca4&#45;a3c8&#45;0f4501d87fd4@173.37.147.141:5061;transport=tls;lr&gt;<br>To:&lt;sip:89023844@cisco.com&gt;;tag=97183a748954e77d<br>User&#45;Agent:TANDBERG&#47;4352&nbsp;(X8.11.4&#45;b2bua&#45;1.0)<br>Via:SIP&#47;2.0&#47;TLS&nbsp;209.197.207.4:5061;branch=z9hG4bKUAU1CfJDECAaUK0mMT98Xg~~517269<br>Via:SIP&#47;2.0&#47;TLS&nbsp;209.197.195.21:5061;branch=z9hG4bK16c5596d5072ffd2ba512df8f82ff0f413463496;rport=28808;egress&#45;zone=ecccpTLS;proxy&#45;call&#45;id=d10ad7a9&#45;4071&#45;4eb7&#45;8bcc&#45;07be30020aa7<br>Via:SIP&#47;2.0&#47;TLS&nbsp;209.197.195.21:5073;branch=z9hG4bK4eab9db73aa10a404598e87639b7f68f266516;rport=31577;x&#45;cisco&#45;local&#45;service=nettle;received=209.197.195.21;ingress&#45;zone=DefaultZone<br>X&#45;TAATag:9c17cb1f&#45;a8b0&#45;4d04&#45;8d54&#45;43c54ea8e076<br><br>hostAndLocalIPSame:false<br>isInternallyGenerated:false<br>isMidCall:true<br>isMsgRetransmitted:false<br>localAlias:cloudProxyv1.0.497<br>localIPAddress:209.197.207.4<br>localPort:33179<br>localSessionID:4c19c1e59f1166f9a0263d2bc56158f8<br>method:ACK<br>reasonCause:0<br>remoteAlias:TANDBERG&#47;4352&nbsp;(X8.11.4&#45;b2bua&#45;1.0)<br>remoteIPAddress:173.37.147.141<br>remotePort:5061<br>remoteSessionID:c3348ec141855f15a0f6868807b14b24<br>requestURI:sip:173.37.147.141:5071;transport=tls<br>ruriHost:173.37.147.141<br>sipMsgType:Request<br>transport:tls<br></td>
+</tr>
+<tr>
+<td width='157'><b>DESCRIPTION:</b> </td>
+<td width='700'>CLOUDPROXY34</td>
+</tr>
+</table>
+
+
+</td>
+</tr>
+</table>    
+
+
+<script>
+$(function(){
+	$('.formEntryCell').each(function() {
+		var rawMsg = $(this).html();
+		//rawMsg = format_json(rawMsg, false);
+		if(rawMsg.indexOf("service.note") > -1){
+		    console.log(rawMsg);
+            var obj = JSON.parse(rawMsg);
+            var payload = JSON.parse(obj.msg.payload);
+            var details = payload.details;
+            var converter = new showdown.Converter();
+            details = details.replace(/&lt;/gi, '<');
+            details = details.replace(/&gt;/gi, '>');
+            details = converter.makeHtml(details);
+            payload.details = details;
+            obj.msg.payload = payload;
+            rawMsg = JSON.stringify(obj);
+            rawMsg = rawMsg.replace(/\\n/gi, '<br/>');
+		}
+        rawMsg = format_str(rawMsg);
+		$(this).html(rawMsg);
+	})
+});
+</script>
+</body>
+</html>
